@@ -517,9 +517,11 @@ def xbmc_shows_to_trakt():
                         xbmc_shows_to_trakt.append(show)
 
                         trakt_show = convert_xbmc_show_to_trakt(show)
-                        trakt_show['plays'] = 0
+                        for episode in trakt_show['episodes']:
+                            episode['plays'] = 0
+
                         trakt_shows.append(trakt_show)
-                        imdb_ids['imdbnumber'] = len(imdb_ids) + 1
+                        imdb_ids[show['imdbnumber']] = len(imdb_ids) + 1
 
                     else:
                         t_index = imdb_ids[show['imdbnumber']]
@@ -545,9 +547,11 @@ def xbmc_shows_to_trakt():
                         xbmc_shows_to_trakt.append(show)
 
                         trakt_show = convert_xbmc_show_to_trakt(show)
-                        trakt_show['plays'] = 0
+                        for episode in trakt_show['episodes']:
+                            episode['plays'] = 0
+
                         trakt_shows.append(trakt_show)
-                        tvdb_ids['imdbnumber'] = len(tvdb_ids) + 1
+                        tvdb_ids[show['imdbnumber']] = len(tvdb_ids) + 1
 
                     else:
                         t_index = tvdb_ids[show['imdbnumber']]
